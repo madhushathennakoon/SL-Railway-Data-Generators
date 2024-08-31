@@ -4,7 +4,7 @@ const length = require("@turf/length").default;
 const along = require("@turf/along").default;
 const cron = require("node-cron");
 
-const routes = require("./trainRoutes");
+const routes = require("./train_routes");
 
 function calculateDistance(speed, intervalInSeconds) {
   return (speed / 3600) * intervalInSeconds;
@@ -99,6 +99,10 @@ function scheduleTrainRoute(trainId, stations, speed, interval) {
 }
 
 // Start simulating the routes for multiple trains, moving at 150 km/h with updates every 10 seconds
-scheduleTrainRoute(1, routes.colomboToKandy, 150, 10);
-scheduleTrainRoute(2, routes.colomboToGalgamuwa, 150, 10);
-scheduleTrainRoute(3, routes.colomboToMatara, 150, 10);
+scheduleTrainRoute(1, routes.colomboToBadulla, 150, 10);
+scheduleTrainRoute(2, routes.colomboToMatara, 150, 10);
+scheduleTrainRoute(3, routes.colomboToTrincomalee, 150, 10);
+scheduleTrainRoute(4, routes.colomboToJaffna, 150, 10);
+scheduleTrainRoute(5, routes.colomboToPuttalam, 150, 10);
+scheduleTrainRoute(6, routes.colomboToMatale, 150, 10);
+scheduleTrainRoute(7, routes.colomboToKelaniValley, 150, 10);
