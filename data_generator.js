@@ -15,6 +15,25 @@ let lastSentTime = {};
 
 const API_KEY = "madhusha-sampath";
 
+async function sendLocationData(trainId) {
+  if (latestLocationData[trainId]) {
+    try {
+      const response = await axios.post(
+        "https://4iecw6fm2f.execute-api.ap-southeast-1.amazonaws.com/api/train/add",
+        latestLocationData[trainId],
+        {
+          headers: {
+            "x-api-key": API_KEY, // Include the API key in the request headers
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.error(`Error sending data for Train ${trainId}:`, error.message);
+    }
+  }
+}
+
 function scheduleTrainRoute(trainId, stations, speed, interval) {
   let currentStationIndex = 0;
   let distanceTravelled = 0;
